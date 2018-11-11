@@ -425,7 +425,7 @@ func (p *analogPin) ReadContinuous() <-chan analog.Reading {
 	}
 	reading := make(chan analog.Reading, 16)
 	p.stop = make(chan struct{})
-	t := time.NewTicker(p.requestedFrequency.Duration())
+	t := time.NewTicker(p.requestedFrequency.Period())
 
 	go func(s <-chan struct{}) {
 		defer t.Stop()

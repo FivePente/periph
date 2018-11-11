@@ -126,7 +126,7 @@ func (i *I2C) Tx(addr uint16, w, r []byte) error {
 func (i *I2C) SetSpeed(f physic.Frequency) error {
 	i.mu.Lock()
 	defer i.mu.Unlock()
-	i.halfCycle = f.Duration() / 2
+	i.halfCycle = f.Period() / 2
 	return nil
 }
 
